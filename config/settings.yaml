@@ -1,0 +1,69 @@
+channel:
+  brand: "UPSC SHORTS"              # shown top-left on every card
+  name: "Civil Services Shorts"
+
+# How many Shorts one run produces. Three is the sweet spot: enough volume for
+# the algorithm to find an audience, still well inside the YouTube API's daily
+# upload quota (10,000 units, ~1,600 per upload).
+batch:
+  videos_per_run: 3
+  # Pause between videos. Gemini's free TTS tier is a few requests per minute,
+  # so spacing the runs out keeps a batch from tripping the rate limit.
+  delay_between_videos_seconds: 30
+
+script:
+  language: "hindi"                 # "hindi" (Devanagari) or "english"
+  target_seconds: 48                # narration budget; drives final length
+  words_per_second: 2.6             # Hindi speaking pace used to size the script
+  max_seconds: 58                   # hard ceiling — crossing 60s loses the Shorts shelf
+
+llm:
+  provider: "groq"                  # "groq" or "gemini"; the other is the fallback
+  groq_model: "llama-3.3-70b-versatile"
+  gemini_model: "gemini-2.5-flash"
+
+tts:
+  provider: "gemini"                # "gemini" (realistic) or "edge" (no quota)
+  language: "hi"
+  gemini:
+    voice_name: "Fenrir"            # Fenrir | Charon | Puck | Kore | Zephyr
+    speed: 0.97                     # <1 slows slightly; Shorts want a brisk read
+    models:
+      - "gemini-3.1-flash-tts-preview"
+      - "gemini-2.5-flash-preview-tts"
+  edge:
+    voice: "hi-IN-MadhurNeural"     # hi-IN-SwaraNeural for a female voice
+    rate: "+8%"
+    pitch: "+0Hz"
+
+video:
+  width: 1080
+  height: 1920
+  fps: 30
+  codec: "libx264"
+  bitrate: "8000k"
+  preset: "medium"
+  threads: 4
+  zoom: 1.06                        # Ken Burns strength per beat
+
+music:
+  enabled: false                    # drop a loop at the path below and flip this
+  file: "assets/music/background.mp3"
+  volume: 0.06
+
+youtube:
+  privacy_status: "public"          # "private" while you are testing
+  playlist_id: ""                   # optional: add every Short to a playlist
+  post_first_comment: true
+
+topics:
+  file: "config/topics.yaml"
+
+database:
+  path: "data/shorts_tracker.db"
+
+output:
+  audio_dir: "output/audio"
+  video_dir: "output/videos"
+  script_dir: "output/scripts"
+  thumbnail_dir: "output/thumbnails"

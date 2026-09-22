@@ -1,0 +1,995 @@
+# ============================================================================
+# TOPIC BANK
+#
+# Each entry becomes exactly one Short. Topics are consumed in order, spread
+# across categories so the three Shorts posted each morning look different from
+# one another. Used ids are recorded in progress.json and never repeat until
+# the whole bank has been cycled.
+#
+# At 3 Shorts/day this bank lasts roughly two months. To extend it, just append
+# more entries — no code change needed.
+#
+# Fields:
+#   id       unique, stable. Changing it makes the topic look unused again.
+#   title    what the Short is about. The script writer rewrites this into the
+#            actual video title, so plain English is fine here.
+#   category drives the accent colour, hashtags and tags. Must be one of:
+#            geopolitics, international_relations, polity, economy, environment,
+#            history, geography, science_tech, schemes, current_affairs
+#   angle    the hook. This is the most important field — it is what separates
+#            "explain the Siachen Glacier" from "why India spends crores to hold
+#            a glacier where no one lives".
+#   keywords search terms; feed the tags and hashtags.
+# ============================================================================
+
+topics:
+
+  # ---------------------------------------------------------------- GEOPOLITICS
+  - id: geo-001
+    title: "Siachen Glacier"
+    category: geopolitics
+    angle: "Why India holds the world's highest battlefield where more soldiers die from cold than bullets"
+    keywords: ["siachen glacier", "india pakistan", "operation meghdoot", "highest battlefield"]
+
+  - id: geo-002
+    title: "Chicken's Neck - Siliguri Corridor"
+    category: geopolitics
+    angle: "A 22 km strip of land that, if cut, would separate the entire Northeast from India"
+    keywords: ["siliguri corridor", "chickens neck", "northeast india", "strategic geography"]
+
+  - id: geo-003
+    title: "String of Pearls"
+    category: geopolitics
+    angle: "How China quietly built ports in a ring around India without firing a shot"
+    keywords: ["string of pearls", "china india", "indian ocean", "gwadar hambantota"]
+
+  - id: geo-004
+    title: "Malacca Dilemma"
+    category: geopolitics
+    angle: "The narrow strait that could choke 80 percent of China's oil in a single day"
+    keywords: ["strait of malacca", "malacca dilemma", "china energy security", "chokepoint"]
+
+  - id: geo-005
+    title: "Doklam Standoff"
+    category: geopolitics
+    angle: "India sent troops into land that was not even its own, and why that was the right call"
+    keywords: ["doklam", "bhutan", "china india standoff", "tri junction"]
+
+  - id: geo-006
+    title: "Line of Actual Control"
+    category: geopolitics
+    angle: "A border so undefined that both armies patrol the same ground believing it is theirs"
+    keywords: ["LAC", "line of actual control", "india china border", "galwan"]
+
+  - id: geo-007
+    title: "Aksai Chin"
+    category: geopolitics
+    angle: "India lost a region the size of Switzerland and did not notice for years"
+    keywords: ["aksai chin", "1962 war", "china occupation", "ladakh"]
+
+  - id: geo-008
+    title: "Chabahar Port"
+    category: geopolitics
+    angle: "India's answer to Pakistan blocking its road to Afghanistan and Central Asia"
+    keywords: ["chabahar port", "iran india", "INSTC", "connectivity"]
+
+  - id: geo-009
+    title: "Arctic Ocean and India"
+    category: geopolitics
+    angle: "Why a tropical country signed up for an Arctic policy and put a station near the North Pole"
+    keywords: ["arctic council", "himadri station", "polar research", "arctic policy"]
+
+  - id: geo-010
+    title: "South China Sea Dispute"
+    category: geopolitics
+    angle: "One country claims a sea using a line drawn on a map in nineteen forty-seven"
+    keywords: ["south china sea", "nine dash line", "UNCLOS", "spratly islands"]
+
+  - id: geo-011
+    title: "Taiwan Question"
+    category: geopolitics
+    angle: "Why a chip factory on one island decides the fate of every smartphone on Earth"
+    keywords: ["taiwan", "semiconductors", "one china policy", "TSMC"]
+
+  - id: geo-012
+    title: "Suez Canal"
+    category: geopolitics
+    angle: "One stuck ship froze nine billion dollars of world trade every single day"
+    keywords: ["suez canal", "ever given", "global trade", "chokepoint"]
+
+  - id: geo-013
+    title: "Hormuz Strait"
+    category: geopolitics
+    angle: "A waterway thirty-three kilometres wide that holds a fifth of the world's oil hostage"
+    keywords: ["strait of hormuz", "oil chokepoint", "iran", "energy security"]
+
+  - id: geo-014
+    title: "Belt and Road Initiative"
+    category: geopolitics
+    angle: "Is it development finance or a debt trap? India is the only major country that refused to join"
+    keywords: ["belt and road", "BRI", "debt trap diplomacy", "CPEC"]
+
+  - id: geo-015
+    title: "Kartarpur Corridor"
+    category: geopolitics
+    angle: "Two armies that shoot at each other built a visa-free road together"
+    keywords: ["kartarpur corridor", "india pakistan", "sikh pilgrimage", "soft diplomacy"]
+
+  - id: geo-016
+    title: "Indian Ocean Region"
+    category: geopolitics
+    angle: "Whoever controls this ocean controls Asia, and four navies are already circling"
+    keywords: ["indian ocean", "IOR", "maritime security", "SAGAR doctrine"]
+
+  - id: geo-017
+    title: "Arunachal Pradesh and China's Claim"
+    category: geopolitics
+    angle: "China renames Indian villages on paper, and there is a reason it keeps doing it"
+    keywords: ["arunachal pradesh", "south tibet", "china claim", "mcmahon line"]
+
+  - id: geo-018
+    title: "Sir Creek Dispute"
+    category: geopolitics
+    angle: "A marshy creek nobody wants to live in, worth fighting over because of what lies beneath"
+    keywords: ["sir creek", "india pakistan dispute", "maritime boundary", "EEZ"]
+
+  - id: geo-019
+    title: "Central Asia and India"
+    category: geopolitics
+    angle: "India's extended neighbourhood that it cannot reach by road because of one country"
+    keywords: ["central asia", "connect central asia", "INSTC", "energy"]
+
+  - id: geo-020
+    title: "Chinese Dams on Brahmaputra"
+    category: geopolitics
+    angle: "A country upstream is building the world's largest dam on a river India depends on"
+    keywords: ["brahmaputra", "yarlung tsangpo", "china dam", "water security"]
+
+  # ------------------------------------------------ INTERNATIONAL RELATIONS
+  - id: ir-001
+    title: "QUAD Grouping"
+    category: international_relations
+    angle: "Four democracies that insist they are not an alliance, while behaving exactly like one"
+    keywords: ["QUAD", "indo pacific", "india usa japan australia", "malabar"]
+
+  - id: ir-002
+    title: "India's UNSC Permanent Seat Bid"
+    category: international_relations
+    angle: "India has been a candidate for decades, and one vote keeps stopping it"
+    keywords: ["UNSC reform", "permanent seat", "G4 nations", "veto power"]
+
+  - id: ir-003
+    title: "BRICS Expansion"
+    category: international_relations
+    angle: "A group of five became eleven, and the dollar is watching nervously"
+    keywords: ["BRICS", "de dollarisation", "new development bank", "expansion"]
+
+  - id: ir-004
+    title: "Non-Aligned Movement Today"
+    category: international_relations
+    angle: "Is non-alignment dead, or has India simply renamed it strategic autonomy?"
+    keywords: ["NAM", "non alignment", "strategic autonomy", "multi alignment"]
+
+  - id: ir-005
+    title: "India-Russia Defence Ties"
+    category: international_relations
+    angle: "Why India refuses to abandon an old friend even when the whole West asks it to"
+    keywords: ["india russia", "S-400", "CAATSA", "defence cooperation"]
+
+  - id: ir-006
+    title: "Indus Waters Treaty"
+    category: international_relations
+    angle: "Two countries fought four wars and never once broke this water agreement"
+    keywords: ["indus waters treaty", "world bank", "india pakistan", "river sharing"]
+
+  - id: ir-007
+    title: "SAARC vs BIMSTEC"
+    category: international_relations
+    angle: "India quietly moved on from one regional group to another, and the reason is one member"
+    keywords: ["SAARC", "BIMSTEC", "regional cooperation", "neighbourhood first"]
+
+  - id: ir-008
+    title: "India-EU Free Trade Agreement"
+    category: international_relations
+    angle: "A trade deal under negotiation for so long that an entire generation grew up waiting"
+    keywords: ["india EU FTA", "trade agreement", "carbon border tax", "exports"]
+
+  - id: ir-009
+    title: "Nuclear Suppliers Group"
+    category: international_relations
+    angle: "India got a special waiver that no other non-signatory has ever received"
+    keywords: ["NSG", "nuclear suppliers group", "123 agreement", "NPT"]
+
+  - id: ir-010
+    title: "Act East Policy"
+    category: international_relations
+    angle: "How Look East became Act East, and what actually changed on the ground"
+    keywords: ["act east policy", "ASEAN", "northeast connectivity", "look east"]
+
+  - id: ir-011
+    title: "Indian Diaspora as Soft Power"
+    category: international_relations
+    angle: "Thirty-two million Indians abroad send home more money than any country on Earth receives"
+    keywords: ["diaspora", "remittances", "soft power", "pravasi bharatiya"]
+
+  - id: ir-012
+    title: "Vaccine Maitri"
+    category: international_relations
+    angle: "India shipped vaccines to a hundred countries before fully covering its own population"
+    keywords: ["vaccine maitri", "vaccine diplomacy", "covid", "soft power"]
+
+  - id: ir-013
+    title: "International Solar Alliance"
+    category: international_relations
+    angle: "The first international organisation headquartered in India, and almost nobody knows it"
+    keywords: ["international solar alliance", "ISA", "renewable energy", "climate diplomacy"]
+
+  - id: ir-014
+    title: "India-Israel Relations"
+    category: international_relations
+    angle: "For forty years India would not admit this relationship existed in public"
+    keywords: ["india israel", "defence technology", "agriculture", "west asia policy"]
+
+  - id: ir-015
+    title: "G20 Presidency Legacy"
+    category: international_relations
+    angle: "India got the African Union a permanent seat at the world's richest table"
+    keywords: ["G20", "african union", "new delhi declaration", "global south"]
+
+  # --------------------------------------------------------------------- POLITY
+  - id: pol-001
+    title: "Basic Structure Doctrine"
+    category: polity
+    angle: "Parliament can amend the Constitution, but there is one thing it can never touch"
+    keywords: ["basic structure", "kesavananda bharati", "constitutional amendment", "judicial review"]
+
+  - id: pol-002
+    title: "Article 356 - President's Rule"
+    category: polity
+    angle: "The article used more than a hundred times, mostly for reasons it was never meant for"
+    keywords: ["article 356", "presidents rule", "SR Bommai", "state emergency"]
+
+  - id: pol-003
+    title: "Anti-Defection Law"
+    category: polity
+    angle: "A law meant to stop horse-trading that quietly made every MLA answerable to a party, not voters"
+    keywords: ["anti defection", "tenth schedule", "speaker powers", "disqualification"]
+
+  - id: pol-004
+    title: "Money Bill vs Financial Bill"
+    category: polity
+    angle: "Call a bill by the right name and the Rajya Sabha loses all power to stop it"
+    keywords: ["money bill", "article 110", "rajya sabha", "speaker certification"]
+
+  - id: pol-005
+    title: "Governor's Discretionary Powers"
+    category: polity
+    angle: "An unelected office that can sit on a bill passed by an elected assembly, indefinitely"
+    keywords: ["governor", "article 200", "assent to bills", "centre state relations"]
+
+  - id: pol-006
+    title: "Collegium System"
+    category: polity
+    angle: "Judges appointing judges — the only system of its kind anywhere in the world"
+    keywords: ["collegium", "NJAC", "judicial appointments", "supreme court"]
+
+  - id: pol-007
+    title: "Right to Privacy Judgement"
+    category: polity
+    angle: "A fundamental right that is not written anywhere in the Constitution"
+    keywords: ["right to privacy", "puttaswamy", "article 21", "fundamental rights"]
+
+  - id: pol-008
+    title: "Directive Principles vs Fundamental Rights"
+    category: polity
+    angle: "What happens when the Constitution's promises collide with its guarantees"
+    keywords: ["DPSP", "fundamental rights", "article 37", "minerva mills"]
+
+  - id: pol-009
+    title: "Emergency Provisions"
+    category: polity
+    angle: "For twenty-one months, every fundamental right in India was legally suspended"
+    keywords: ["emergency 1975", "article 352", "44th amendment", "habeas corpus"]
+
+  - id: pol-010
+    title: "Seventh Schedule"
+    category: polity
+    angle: "A list that decides whether Delhi or your state capital controls your daily life"
+    keywords: ["seventh schedule", "union list", "state list", "concurrent list"]
+
+  - id: pol-011
+    title: "Election Commission Powers"
+    category: polity
+    angle: "A three-member body that can pause an entire national election"
+    keywords: ["election commission", "article 324", "model code of conduct", "CEC appointment"]
+
+  - id: pol-012
+    title: "73rd and 74th Amendments"
+    category: polity
+    angle: "India created two and a half lakh new governments overnight"
+    keywords: ["panchayati raj", "73rd amendment", "urban local bodies", "decentralisation"]
+
+  - id: pol-013
+    title: "Article 370 Abrogation"
+    category: polity
+    angle: "A temporary provision that lasted seventy years, removed in a single afternoon"
+    keywords: ["article 370", "jammu kashmir", "article 35A", "reorganisation act"]
+
+  - id: pol-014
+    title: "Ordinance Making Power"
+    category: polity
+    angle: "The government can make law while Parliament sleeps, and some ordinances were re-issued for years"
+    keywords: ["ordinance", "article 123", "re promulgation", "DC wadhwa case"]
+
+  - id: pol-015
+    title: "Judicial Review vs Judicial Activism"
+    category: polity
+    angle: "Where does the court stop checking the government and start running it?"
+    keywords: ["judicial review", "judicial activism", "PIL", "separation of powers"]
+
+  - id: pol-016
+    title: "Office of Profit"
+    category: polity
+    angle: "A single extra post cost twenty MLAs their seats"
+    keywords: ["office of profit", "article 102", "disqualification", "parliamentary secretary"]
+
+  - id: pol-017
+    title: "Finance Commission"
+    category: polity
+    angle: "Five people decide how India's tax money is split between the Centre and every state"
+    keywords: ["finance commission", "article 280", "tax devolution", "vertical sharing"]
+
+  - id: pol-018
+    title: "Fundamental Duties"
+    category: polity
+    angle: "Eleven duties in the Constitution that carry no punishment if you ignore them"
+    keywords: ["fundamental duties", "article 51A", "42nd amendment", "swaran singh committee"]
+
+  - id: pol-019
+    title: "Preamble of the Constitution"
+    category: polity
+    angle: "Two words were added in nineteen seventy-six that changed what India calls itself"
+    keywords: ["preamble", "socialist secular", "42nd amendment", "berubari case"]
+
+  - id: pol-020
+    title: "Parliamentary Privileges"
+    category: polity
+    angle: "MPs can say inside Parliament what would get anyone else sued outside it"
+    keywords: ["parliamentary privileges", "article 105", "breach of privilege", "immunity"]
+
+  # -------------------------------------------------------------------- ECONOMY
+  - id: eco-001
+    title: "Fiscal Deficit Explained"
+    category: economy
+    angle: "The government spends more than it earns every single year, and that is by design"
+    keywords: ["fiscal deficit", "FRBM act", "budget", "government borrowing"]
+
+  - id: eco-002
+    title: "Repo Rate and Your EMI"
+    category: economy
+    angle: "One number decided in Mumbai changes what you pay on your home loan"
+    keywords: ["repo rate", "RBI monetary policy", "EMI", "inflation targeting"]
+
+  - id: eco-003
+    title: "Inflation Targeting Framework"
+    category: economy
+    angle: "RBI has a legal target of four percent, and missing it means writing a letter to the government"
+    keywords: ["inflation targeting", "CPI", "monetary policy committee", "RBI act"]
+
+  - id: eco-004
+    title: "Current Account Deficit"
+    category: economy
+    angle: "India buys more from the world than it sells, and oil is the reason"
+    keywords: ["current account deficit", "CAD", "balance of payments", "crude imports"]
+
+  - id: eco-005
+    title: "GST Council"
+    category: economy
+    angle: "The first body where the Centre and every state must agree before a tax can change"
+    keywords: ["GST council", "article 279A", "indirect tax", "cooperative federalism"]
+
+  - id: eco-006
+    title: "Demographic Dividend"
+    category: economy
+    angle: "India has the world's largest young population, and a closing window to use it"
+    keywords: ["demographic dividend", "working age population", "skilling", "jobs"]
+
+  - id: eco-007
+    title: "Twin Balance Sheet Problem"
+    category: economy
+    angle: "Banks could not lend and companies could not borrow, at the same time"
+    keywords: ["twin balance sheet", "NPA", "bank recapitalisation", "IBC"]
+
+  - id: eco-008
+    title: "Insolvency and Bankruptcy Code"
+    category: economy
+    angle: "Before twenty-sixteen, closing a failed company in India took more than four years"
+    keywords: ["IBC", "insolvency", "NCLT", "ease of doing business"]
+
+  - id: eco-009
+    title: "UPI Revolution"
+    category: economy
+    angle: "India processes more real-time digital payments than the rest of the world combined"
+    keywords: ["UPI", "digital payments", "NPCI", "financial inclusion"]
+
+  - id: eco-010
+    title: "Production Linked Incentive Scheme"
+    category: economy
+    angle: "The government pays companies to manufacture, and phone exports went up many times over"
+    keywords: ["PLI scheme", "manufacturing", "make in india", "electronics exports"]
+
+  - id: eco-011
+    title: "Middle Income Trap"
+    category: economy
+    angle: "Getting from poor to middle income is the easy part; almost no country escapes the next step"
+    keywords: ["middle income trap", "per capita income", "growth", "development economics"]
+
+  - id: eco-012
+    title: "Disinvestment vs Privatisation"
+    category: economy
+    angle: "Selling a slice and selling control are two very different things"
+    keywords: ["disinvestment", "privatisation", "PSU", "strategic sale"]
+
+  - id: eco-013
+    title: "Foreign Exchange Reserves"
+    category: economy
+    angle: "India holds enough dollars to pay for nearly a year of imports, and that is a deliberate insurance policy"
+    keywords: ["forex reserves", "RBI", "import cover", "rupee stability"]
+
+  - id: eco-014
+    title: "MSP and Procurement"
+    category: economy
+    angle: "A price guarantee that reaches only a small fraction of farmers"
+    keywords: ["MSP", "minimum support price", "procurement", "CACP"]
+
+  - id: eco-015
+    title: "Informal Economy"
+    category: economy
+    angle: "Most Indian workers have no contract, no payslip, and no place in official statistics"
+    keywords: ["informal sector", "unorganised workers", "e shram", "labour codes"]
+
+  - id: eco-016
+    title: "Jobless Growth"
+    category: economy
+    angle: "The economy grows every year, but employment does not grow with it"
+    keywords: ["jobless growth", "unemployment", "labour force participation", "PLFS"]
+
+  - id: eco-017
+    title: "Rupee Depreciation"
+    category: economy
+    angle: "A falling rupee is not automatically bad news, and exporters will tell you why"
+    keywords: ["rupee depreciation", "exchange rate", "imports exports", "dollar index"]
+
+  - id: eco-018
+    title: "Direct Benefit Transfer"
+    category: economy
+    angle: "Cutting out the middleman in welfare saved lakhs of crores"
+    keywords: ["DBT", "aadhaar", "JAM trinity", "subsidy leakage"]
+
+  # ---------------------------------------------------------------- ENVIRONMENT
+  - id: env-001
+    title: "Net Zero by 2070"
+    category: environment
+    angle: "India promised net zero twenty years after everyone else, and had a strong argument for it"
+    keywords: ["net zero", "COP26", "panchamrit", "climate commitments"]
+
+  - id: env-002
+    title: "Common But Differentiated Responsibilities"
+    category: environment
+    angle: "The principle India uses to argue that the West must pay for the mess it made"
+    keywords: ["CBDR", "UNFCCC", "climate justice", "historical emissions"]
+
+  - id: env-003
+    title: "Western Ghats Ecology"
+    category: environment
+    angle: "Two expert reports, two very different answers, and states rejected both"
+    keywords: ["western ghats", "gadgil report", "kasturirangan report", "ESA"]
+
+  - id: env-004
+    title: "Project Tiger at Fifty"
+    category: environment
+    angle: "India has seventy percent of the world's wild tigers on a fraction of its land"
+    keywords: ["project tiger", "NTCA", "tiger reserves", "conservation"]
+
+  - id: env-005
+    title: "Great Nicobar Project"
+    category: environment
+    angle: "A strategic mega-port versus a rainforest and the tribes who live in it"
+    keywords: ["great nicobar", "shompen", "environmental clearance", "development vs ecology"]
+
+  - id: env-006
+    title: "Groundwater Crisis"
+    category: environment
+    angle: "India pumps more groundwater than the United States and China put together"
+    keywords: ["groundwater depletion", "atal bhujal", "water crisis", "central ground water board"]
+
+  - id: env-007
+    title: "Stubble Burning"
+    category: environment
+    angle: "Why a farmer with two weeks to sow his next crop sets his field on fire"
+    keywords: ["stubble burning", "air pollution", "delhi smog", "happy seeder"]
+
+  - id: env-008
+    title: "Carbon Border Adjustment Mechanism"
+    category: environment
+    angle: "Europe will tax Indian steel for the carbon used to make it, and India calls it protectionism"
+    keywords: ["CBAM", "carbon tax", "EU", "exports"]
+
+  - id: env-009
+    title: "Cheetah Reintroduction"
+    category: environment
+    angle: "The world's first intercontinental big cat translocation, and the debate over whether it should have happened"
+    keywords: ["cheetah project", "kuno national park", "reintroduction", "wildlife"]
+
+  - id: env-010
+    title: "Coastal Regulation Zone"
+    category: environment
+    angle: "Rules that decide how close to the sea anyone in India is allowed to build"
+    keywords: ["CRZ", "coastal regulation", "blue economy", "environment ministry"]
+
+  - id: env-011
+    title: "Environmental Impact Assessment"
+    category: environment
+    angle: "A process meant to stop bad projects that critics say has become a formality"
+    keywords: ["EIA", "public hearing", "environmental clearance", "EIA 2020 draft"]
+
+  - id: env-012
+    title: "Wetlands and Ramsar Sites"
+    category: environment
+    angle: "India added more Ramsar sites in a few years than in the previous four decades"
+    keywords: ["ramsar sites", "wetlands", "montreux record", "conservation"]
+
+  - id: env-013
+    title: "Plastic Waste Rules"
+    category: environment
+    angle: "Single-use plastic is banned, and the ban has one very obvious loophole"
+    keywords: ["single use plastic", "EPR", "plastic waste rules", "pollution"]
+
+  - id: env-014
+    title: "Green Hydrogen Mission"
+    category: environment
+    angle: "India wants to export the fuel that could replace oil, before anyone else scales it"
+    keywords: ["green hydrogen", "national hydrogen mission", "electrolyser", "energy transition"]
+
+  - id: env-015
+    title: "Himalayan Glacier Melt"
+    category: environment
+    angle: "The water tower of Asia is shrinking, and two billion people drink from it"
+    keywords: ["glacier melt", "himalaya", "GLOF", "water security"]
+
+  # -------------------------------------------------------------------- HISTORY
+  - id: his-001
+    title: "Permanent Settlement of 1793"
+    category: history
+    angle: "A tax system designed to help farmers that created a class of landlords instead"
+    keywords: ["permanent settlement", "cornwallis", "zamindari", "land revenue"]
+
+  - id: his-002
+    title: "Drain of Wealth Theory"
+    category: history
+    angle: "Dadabhai Naoroji proved with British numbers that Britain was draining India"
+    keywords: ["drain of wealth", "dadabhai naoroji", "economic nationalism", "poverty and un british rule"]
+
+  - id: his-003
+    title: "Rowlatt Act and Jallianwala Bagh"
+    category: history
+    angle: "A law that allowed arrest without trial, and the massacre that followed the protest"
+    keywords: ["rowlatt act", "jallianwala bagh", "1919", "dyer"]
+
+  - id: his-004
+    title: "Non-Cooperation Movement"
+    category: history
+    angle: "Gandhi called off a mass movement at its peak, and many never forgave him"
+    keywords: ["non cooperation movement", "chauri chaura", "gandhi", "1922"]
+
+  - id: his-005
+    title: "Simon Commission"
+    category: history
+    angle: "Seven British members deciding India's future, with not one Indian among them"
+    keywords: ["simon commission", "go back simon", "lala lajpat rai", "nehru report"]
+
+  - id: his-006
+    title: "Poona Pact"
+    category: history
+    angle: "Ambedkar won separate electorates, then gave them up to save Gandhi's life"
+    keywords: ["poona pact", "ambedkar gandhi", "communal award", "separate electorate"]
+
+  - id: his-007
+    title: "Quit India Movement"
+    category: history
+    angle: "Every senior leader was jailed within hours, and the movement grew anyway"
+    keywords: ["quit india", "1942", "do or die", "august kranti"]
+
+  - id: his-008
+    title: "Indian National Army"
+    category: history
+    angle: "The trials of INA soldiers did more damage to British rule than the army itself"
+    keywords: ["INA", "subhas chandra bose", "red fort trials", "azad hind"]
+
+  - id: his-009
+    title: "Cabinet Mission Plan"
+    category: history
+    angle: "The last serious plan to keep India united, and why it collapsed"
+    keywords: ["cabinet mission", "1946", "grouping", "constituent assembly"]
+
+  - id: his-010
+    title: "Integration of Princely States"
+    category: history
+    angle: "Five hundred and sixty-five kingdoms joined India in under two years"
+    keywords: ["princely states", "sardar patel", "instrument of accession", "VP Menon"]
+
+  - id: his-011
+    title: "Harappan Town Planning"
+    category: history
+    angle: "A civilisation that had covered drains four thousand years before most cities did"
+    keywords: ["indus valley", "harappa", "town planning", "great bath"]
+
+  - id: his-012
+    title: "Ashoka's Dhamma"
+    category: history
+    angle: "An emperor who won the biggest war of his life and then renounced war entirely"
+    keywords: ["ashoka", "dhamma", "kalinga war", "edicts"]
+
+  - id: his-013
+    title: "Gupta Golden Age"
+    category: history
+    angle: "Zero, the decimal system and the idea that Earth rotates all came from one era"
+    keywords: ["gupta empire", "aryabhata", "golden age", "ancient india science"]
+
+  - id: his-014
+    title: "Bhakti Movement"
+    category: history
+    angle: "Saints who wrote in local languages and bypassed priests entirely"
+    keywords: ["bhakti movement", "kabir", "meerabai", "social reform"]
+
+  - id: his-015
+    title: "Vijayanagara Empire"
+    category: history
+    angle: "A city foreign travellers described as larger than Rome, destroyed in a single battle"
+    keywords: ["vijayanagara", "hampi", "krishnadevaraya", "talikota"]
+
+  - id: his-016
+    title: "Battle of Plassey"
+    category: history
+    angle: "An empire changed hands because of betrayal, not because of fighting"
+    keywords: ["battle of plassey", "1757", "mir jafar", "siraj ud daulah"]
+
+  - id: his-017
+    title: "Revolt of 1857"
+    category: history
+    angle: "It was called a mutiny, a rebellion and a first war of independence — all describing the same year"
+    keywords: ["revolt of 1857", "sepoy mutiny", "first war of independence", "mangal pandey"]
+
+  - id: his-018
+    title: "Formation of Indian National Congress"
+    category: history
+    angle: "Founded with the help of a retired British officer, and it still became the party that ended British rule"
+    keywords: ["indian national congress", "AO Hume", "1885", "moderates"]
+
+  # ------------------------------------------------------------------ GEOGRAPHY
+  - id: geog-001
+    title: "Indian Monsoon Mechanism"
+    category: geography
+    angle: "An entire economy still waits on a wind that reverses direction twice a year"
+    keywords: ["monsoon", "ITCZ", "southwest monsoon", "rainfall"]
+
+  - id: geog-002
+    title: "El Nino and La Nina"
+    category: geography
+    angle: "Warm water off the coast of Peru decides whether Indian farmers have a good year"
+    keywords: ["el nino", "la nina", "ENSO", "monsoon failure"]
+
+  - id: geog-003
+    title: "Western Disturbances"
+    category: geography
+    angle: "North India's winter rain travels all the way from the Mediterranean Sea"
+    keywords: ["western disturbance", "winter rainfall", "rabi crop", "mediterranean"]
+
+  - id: geog-004
+    title: "Himalayan Formation"
+    category: geography
+    angle: "The world's highest mountains are still growing, and they were once a sea floor"
+    keywords: ["himalaya formation", "plate tectonics", "tethys sea", "fossils"]
+
+  - id: geog-005
+    title: "Black Soil of the Deccan"
+    category: geography
+    angle: "Soil formed by volcanic lava that holds water so well it is perfect for cotton"
+    keywords: ["black soil", "regur", "deccan trap", "cotton cultivation"]
+
+  - id: geog-006
+    title: "Peninsular vs Himalayan Rivers"
+    category: geography
+    angle: "One set flows all year, the other dries up, and the reason is entirely about their source"
+    keywords: ["himalayan rivers", "peninsular rivers", "perennial", "drainage system"]
+
+  - id: geog-007
+    title: "Cyclones in the Bay of Bengal"
+    category: geography
+    angle: "The Bay produces far more deadly cyclones than the Arabian Sea, and geography explains it"
+    keywords: ["cyclone", "bay of bengal", "storm surge", "IMD"]
+
+  - id: geog-008
+    title: "Tropic of Cancer through India"
+    category: geography
+    angle: "One imaginary line splits India into two completely different climate zones"
+    keywords: ["tropic of cancer", "climate zones", "latitude", "indian states"]
+
+  - id: geog-009
+    title: "Indian Standard Time"
+    category: geography
+    angle: "A single time zone for a country so wide that the sun rises two hours apart"
+    keywords: ["IST", "82.5 E", "time zone", "northeast sunrise"]
+
+  - id: geog-010
+    title: "Thar Desert Expansion"
+    category: geography
+    angle: "A desert that is getting greener in some places and spreading in others"
+    keywords: ["thar desert", "desertification", "rajasthan", "indira gandhi canal"]
+
+  - id: geog-011
+    title: "Coral Reefs of India"
+    category: geography
+    angle: "Underwater cities built by animals, and rising heat is bleaching them white"
+    keywords: ["coral reefs", "lakshadweep", "coral bleaching", "marine biodiversity"]
+
+  - id: geog-012
+    title: "Mangroves and the Sundarbans"
+    category: geography
+    angle: "A forest that grows in salt water and absorbs a cyclone before it reaches the city"
+    keywords: ["mangroves", "sundarbans", "coastal protection", "biodiversity"]
+
+  - id: geog-013
+    title: "Jet Streams"
+    category: geography
+    angle: "A river of wind ten kilometres above your head controls the arrival of the monsoon"
+    keywords: ["jet stream", "subtropical westerly", "tropical easterly", "monsoon onset"]
+
+  - id: geog-014
+    title: "Mineral Belt of India"
+    category: geography
+    angle: "Most of India's mineral wealth sits under its least developed districts"
+    keywords: ["mineral resources", "chotanagpur plateau", "coal iron ore", "resource curse"]
+
+  - id: geog-015
+    title: "River Interlinking Project"
+    category: geography
+    angle: "A plan to move water from surplus rivers to dry ones, debated for over a century"
+    keywords: ["river interlinking", "ken betwa", "NWDA", "water management"]
+
+  # --------------------------------------------------------------- SCIENCE TECH
+  - id: sci-001
+    title: "Chandrayaan-3 South Pole Landing"
+    category: science_tech
+    angle: "India reached a part of the Moon no country had ever touched, on a shoestring budget"
+    keywords: ["chandrayaan 3", "ISRO", "lunar south pole", "vikram lander"]
+
+  - id: sci-002
+    title: "Aditya-L1 Solar Mission"
+    category: science_tech
+    angle: "A spacecraft parked at a point in space where it can watch the Sun without ever being blocked"
+    keywords: ["aditya L1", "lagrange point", "solar mission", "ISRO"]
+
+  - id: sci-003
+    title: "Gaganyaan Human Spaceflight"
+    category: science_tech
+    angle: "India is building the capability to put its own astronauts in orbit"
+    keywords: ["gaganyaan", "human spaceflight", "ISRO", "crew module"]
+
+  - id: sci-004
+    title: "Semiconductor Mission"
+    category: science_tech
+    angle: "India imports almost every chip it uses, and that is now a national security problem"
+    keywords: ["semiconductor mission", "chip fabrication", "ISM", "electronics"]
+
+  - id: sci-005
+    title: "Quantum Computing Mission"
+    category: science_tech
+    angle: "A computer that could break today's encryption is being built right now"
+    keywords: ["quantum computing", "national quantum mission", "encryption", "qubits"]
+
+  - id: sci-006
+    title: "CRISPR Gene Editing"
+    category: science_tech
+    angle: "Scientists can now edit a gene like text, and India approved its first gene therapy"
+    keywords: ["CRISPR", "gene editing", "sickle cell", "biotechnology"]
+
+  - id: sci-007
+    title: "5G and 6G Rollout"
+    category: science_tech
+    angle: "India built one of the world's fastest 5G rollouts while designing its own 6G stack"
+    keywords: ["5G", "6G", "telecom", "bharat 6G"]
+
+  - id: sci-008
+    title: "Artificial Intelligence Regulation"
+    category: science_tech
+    angle: "Every government is trying to regulate something that changes faster than laws can be written"
+    keywords: ["AI regulation", "india AI mission", "deepfake", "ethics"]
+
+  - id: sci-009
+    title: "Nuclear Three-Stage Programme"
+    category: science_tech
+    angle: "India designed a nuclear plan around thorium because it had little uranium"
+    keywords: ["three stage nuclear programme", "thorium", "fast breeder reactor", "homi bhabha"]
+
+  - id: sci-010
+    title: "NavIC Navigation System"
+    category: science_tech
+    angle: "India built its own GPS after being denied access during a war"
+    keywords: ["NavIC", "IRNSS", "satellite navigation", "kargil"]
+
+  - id: sci-011
+    title: "Antimicrobial Resistance"
+    category: science_tech
+    angle: "Infections that antibiotics used to cure are becoming untreatable, fast"
+    keywords: ["antimicrobial resistance", "AMR", "antibiotics", "public health"]
+
+  - id: sci-012
+    title: "Space Debris Problem"
+    category: science_tech
+    angle: "Orbit is filling with junk moving faster than a bullet, and one collision could trigger many"
+    keywords: ["space debris", "kessler syndrome", "ISRO", "orbital congestion"]
+
+  - id: sci-013
+    title: "Indigenous Vaccine Platform"
+    category: science_tech
+    angle: "India developed and approved its own COVID vaccine while most countries waited"
+    keywords: ["covaxin", "vaccine development", "ICMR", "biotechnology"]
+
+  - id: sci-014
+    title: "Drone Technology and Rules"
+    category: science_tech
+    angle: "Drones deliver medicines in the hills and map every village's land records"
+    keywords: ["drone rules", "SVAMITVA", "UAV", "agriculture drones"]
+
+  - id: sci-015
+    title: "Fusion Energy and ITER"
+    category: science_tech
+    angle: "India is one of seven partners building a machine that copies the Sun"
+    keywords: ["nuclear fusion", "ITER", "tokamak", "clean energy"]
+
+  # -------------------------------------------------------------------- SCHEMES
+  - id: sch-001
+    title: "Ayushman Bharat"
+    category: schemes
+    angle: "The world's largest health insurance scheme, covering more people than most countries have"
+    keywords: ["ayushman bharat", "PMJAY", "health insurance", "universal health coverage"]
+
+  - id: sch-002
+    title: "PM Jan Dhan Yojana"
+    category: schemes
+    angle: "Fifty crore bank accounts opened for people banks previously ignored"
+    keywords: ["jan dhan yojana", "financial inclusion", "zero balance account", "JAM"]
+
+  - id: sch-003
+    title: "MGNREGA"
+    category: schemes
+    angle: "A law that makes employment a legal right, not a favour"
+    keywords: ["MGNREGA", "right to work", "rural employment", "social security"]
+
+  - id: sch-004
+    title: "PM Awas Yojana"
+    category: schemes
+    angle: "Houses built at a scale where the count itself becomes hard to believe"
+    keywords: ["PMAY", "housing for all", "rural housing", "urban housing"]
+
+  - id: sch-005
+    title: "Ujjwala Yojana"
+    category: schemes
+    angle: "Free gas connections to stop women cooking over smoke that kills"
+    keywords: ["ujjwala yojana", "LPG", "indoor air pollution", "women health"]
+
+  - id: sch-006
+    title: "PM Kisan Samman Nidhi"
+    category: schemes
+    angle: "Money transferred directly to farmers with no file moving through any office"
+    keywords: ["PM kisan", "income support", "DBT", "farmers"]
+
+  - id: sch-007
+    title: "Swachh Bharat Mission"
+    category: schemes
+    angle: "A sanitation campaign that had to change behaviour, not just build toilets"
+    keywords: ["swachh bharat", "open defecation free", "sanitation", "toilets"]
+
+  - id: sch-008
+    title: "National Education Policy 2020"
+    category: schemes
+    angle: "India's first education policy rewrite in thirty-four years"
+    keywords: ["NEP 2020", "education policy", "5+3+3+4", "multidisciplinary"]
+
+  - id: sch-009
+    title: "One Nation One Ration Card"
+    category: schemes
+    angle: "A migrant worker can now claim rations in a state he has never lived in"
+    keywords: ["one nation one ration card", "PDS", "migrant workers", "food security"]
+
+  - id: sch-010
+    title: "Atal Pension Yojana"
+    category: schemes
+    angle: "A guaranteed pension for workers who never had an employer to provide one"
+    keywords: ["atal pension yojana", "APY", "social security", "unorganised sector"]
+
+  - id: sch-011
+    title: "Skill India Mission"
+    category: schemes
+    angle: "Training crores of young people for jobs that keep changing shape"
+    keywords: ["skill india", "PMKVY", "vocational training", "employability"]
+
+  - id: sch-012
+    title: "Mission Karmayogi"
+    category: schemes
+    angle: "A programme to retrain the entire civil service, including future officers"
+    keywords: ["mission karmayogi", "civil services reform", "capacity building", "iGOT"]
+
+  # ------------------------------------------------------------ CURRENT AFFAIRS
+  - id: ca-001
+    title: "Women's Reservation Act"
+    category: current_affairs
+    angle: "A law passed after twenty-seven years of failed attempts, with one big condition attached"
+    keywords: ["women reservation", "nari shakti vandan", "106th amendment", "delimitation"]
+
+  - id: ca-002
+    title: "One Nation One Election"
+    category: current_affairs
+    angle: "Holding every election on the same day would need the Constitution itself to change"
+    keywords: ["one nation one election", "simultaneous elections", "kovind committee", "constitutional amendment"]
+
+  - id: ca-003
+    title: "Digital Personal Data Protection Act"
+    category: current_affairs
+    angle: "India finally has a data law, and it has a long list of government exemptions"
+    keywords: ["DPDP act", "data protection", "privacy", "consent manager"]
+
+  - id: ca-004
+    title: "Three New Criminal Laws"
+    category: current_affairs
+    angle: "India replaced colonial-era criminal codes that had been in force for over a century"
+    keywords: ["bharatiya nyaya sanhita", "BNSS", "criminal law reform", "IPC replacement"]
+
+  - id: ca-005
+    title: "Delimitation Debate"
+    category: current_affairs
+    angle: "States that controlled their population growth could end up losing seats for it"
+    keywords: ["delimitation", "2026", "lok sabha seats", "north south divide"]
+
+  - id: ca-006
+    title: "Electoral Bonds Verdict"
+    category: current_affairs
+    angle: "The Supreme Court struck down anonymous political funding as unconstitutional"
+    keywords: ["electoral bonds", "political funding", "supreme court", "transparency"]
+
+  - id: ca-007
+    title: "Uniform Civil Code"
+    category: current_affairs
+    angle: "Article 44 has asked for it since nineteen fifty, and one state moved first"
+    keywords: ["uniform civil code", "UCC", "article 44", "uttarakhand"]
+
+  - id: ca-008
+    title: "India's Census Delay"
+    category: current_affairs
+    angle: "Almost every welfare scheme still uses population data that is over a decade old"
+    keywords: ["census", "population data", "NFSA", "delay"]
+
+  - id: ca-009
+    title: "Cryptocurrency Regulation"
+    category: current_affairs
+    angle: "India taxes crypto heavily without ever making it legal tender"
+    keywords: ["cryptocurrency", "VDA tax", "CBDC", "digital rupee"]
+
+  - id: ca-010
+    title: "Lateral Entry in Civil Services"
+    category: current_affairs
+    angle: "Bringing private sector experts straight into senior government posts, and why it is contested"
+    keywords: ["lateral entry", "UPSC", "civil services", "bureaucracy reform"]
+
+  - id: ca-011
+    title: "Agnipath Scheme"
+    category: current_affairs
+    angle: "A four-year military service model that changed how India recruits soldiers"
+    keywords: ["agnipath", "agniveer", "defence recruitment", "armed forces"]
+
+  - id: ca-012
+    title: "Indian Railways Modernisation"
+    category: current_affairs
+    angle: "Dedicated freight corridors move goods at speeds the old network never could"
+    keywords: ["dedicated freight corridor", "vande bharat", "railway modernisation", "kavach"]

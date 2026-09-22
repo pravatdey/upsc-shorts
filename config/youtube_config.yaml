@@ -1,0 +1,133 @@
+metadata:
+  category_id: "27"          # Education
+  language: "hi"
+  made_for_kids: false
+
+  exam_note_label: "परीक्षा में कैसे पूछा जाता है:"
+  comment_prompt: "आपका जवाब कमेंट में लिखिए:"
+
+  description_body: |
+    रोज़ाना UPSC, State PSC, SSC और सभी प्रतियोगी परीक्षाओं के लिए छोटे और काम के शॉर्ट्स।
+    विषय: {topic} ({category})
+
+    ऐसे ही रोज़ नए शॉर्ट्स के लिए चैनल को फॉलो कीजिए और बेल आइकन दबाइए।
+
+  base_tags:
+    - "upsc"
+    - "upsc shorts"
+    - "civil services"
+    - "ias preparation"
+    - "upsc current affairs"
+    - "gk in hindi"
+    - "general knowledge"
+    - "competitive exams"
+    - "state psc"
+    - "ssc gk"
+    - "upsc prelims"
+    - "upsc mains"
+    - "यूपीएससी"
+    - "सामान्य ज्ञान"
+
+# Extra tags mixed in based on the topic's category.
+category_tags:
+  geopolitics:
+    - "geopolitics"
+    - "world politics"
+    - "international affairs"
+  international_relations:
+    - "international relations"
+    - "india foreign policy"
+    - "ir for upsc"
+  polity:
+    - "indian polity"
+    - "constitution of india"
+    - "polity for upsc"
+  economy:
+    - "indian economy"
+    - "economy for upsc"
+    - "economics gk"
+  environment:
+    - "environment upsc"
+    - "climate change"
+    - "ecology"
+  history:
+    - "indian history"
+    - "modern history"
+    - "history for upsc"
+  geography:
+    - "geography upsc"
+    - "indian geography"
+    - "world geography"
+  science_tech:
+    - "science and technology"
+    - "sci tech upsc"
+    - "space technology"
+  schemes:
+    - "government schemes"
+    - "sarkari yojana"
+    - "schemes for upsc"
+  current_affairs:
+    - "current affairs"
+    - "daily current affairs"
+    - "current affairs in hindi"
+
+# Hashtags actually placed in the title and description.
+# "always" runs on every Short; the category pool adds topical reach.
+hashtags:
+  always:
+    - "#shorts"
+    - "#upsc"
+    - "#gk"
+    - "#currentaffairs"
+    - "#ias"
+
+  by_category:
+    geopolitics:
+      - "#geopolitics"
+      - "#worldaffairs"
+      - "#india"
+    international_relations:
+      - "#internationalrelations"
+      - "#foreignpolicy"
+      - "#diplomacy"
+    polity:
+      - "#polity"
+      - "#constitution"
+      - "#indianpolity"
+    economy:
+      - "#economy"
+      - "#indianeconomy"
+      - "#economics"
+    environment:
+      - "#environment"
+      - "#climatechange"
+      - "#ecology"
+    history:
+      - "#history"
+      - "#indianhistory"
+      - "#modernhistory"
+    geography:
+      - "#geography"
+      - "#worldgeography"
+      - "#mapping"
+    science_tech:
+      - "#sciencetech"
+      - "#isro"
+      - "#technology"
+    schemes:
+      - "#governmentschemes"
+      - "#sarkariyojana"
+      - "#schemes"
+    current_affairs:
+      - "#currentaffairs2025"
+      - "#dailygk"
+      - "#news"
+
+comment:
+  # Placeholders available: {question}, {exam_note}, {topic}
+  first_comment_template: |
+    {question}
+
+    {exam_note}
+
+    रोज़ 3 नए UPSC शॉर्ट्स — फॉलो करना मत भूलिए।

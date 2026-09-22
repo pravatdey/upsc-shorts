@@ -1,0 +1,160 @@
+name: Daily UPSC Shorts
+
+on:
+  schedule:
+    # 06:00 IST = 00:30 UTC. Morning posting catches the commute scroll.
+    - cron: '30 0 * * *'
+  workflow_dispatch:
+    inputs:
+      count:
+        description: 'How many Shorts to generate'
+        required: false
+        default: '3'
+      test_mode:
+        description: 'Upload as private (true/false)'
+        required: false
+        default: 'false'
+      topic_id:
+        description: 'Force a specific topic id (optional, e.g. geo-001)'
+        required: false
+        default: ''
+
+# Needed so the job can commit progress.json back to the repo.
+permissions:
+  contents: write
+
+# Never let two runs publish overlapping topics.
+concurrency:
+  group: daily-shorts
+  cancel-in-progress: false
+
+jobs:
+  generate-and-upload:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install system dependencies
+        # fonts-noto-devanagari supplies the Hindi glyphs. libraqm does the
+        # complex-script shaping (matra reordering, conjunct formation) that
+        # Devanagari needs — without it "डिग्री" renders as "डग्ि्री".
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends \
+            ffmpeg \
+            libraqm0 \
+            fonts-noto-core \
+            fonts-noto-devanagari
+          fc-cache -f
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Ensure Pillow has Raqm text shaping
+        # Pillow's manylinux wheels normally bundle Raqm. If this runner's
+        # wheel does not, rebuild Pillow against the system libraqm rather than
+        # publishing a day of videos with mangled Hindi.
+        run: |
+          if python -c "from PIL import features; import sys; sys.exit(0 if features.check('raqm') else 1)"; then
+            echo "Raqm already available in the installed Pillow wheel"
+          else
+            echo "::warning::Pillow wheel lacks Raqm; rebuilding from source"
+            sudo apt-get install -y --no-install-recommends \
+              libraqm-dev libfreetype6-dev libharfbuzz-dev libfribidi-dev
+            pip install --force-reinstall --no-binary :all: --no-cache-dir Pillow
+          fi
+
+      - name: Verify Devanagari rendering
+        # A hard gate. Broken shaping is invisible to the pipeline but obvious
+        # to every viewer, so it must fail the run, not warn about it.
+        run: |
+          python - <<'PY'
+          import sys, yaml
+          from PIL import features
+          from src.video.fonts import FontBook
+
+          language = yaml.safe_load(open("config/settings.yaml"))["script"]["language"]
+          book = FontBook()
+          print("language       :", language)
+          print("raqm shaping   :", features.check("raqm"))
+          print("devanagari font:", book.devanagari_path)
+          print("latin font     :", book.latin_path)
+
+          if language != "hindi":
+              sys.exit(0)
+
+          problems = []
+          if not book.devanagari_path:
+              problems.append("no Devanagari font on the runner")
+          if not features.check("raqm"):
+              problems.append("Pillow has no Raqm engine, so matras will misrender")
+          if problems:
+              print("::error::" + "; ".join(problems))
+              sys.exit(1)
+          PY
+
+      - name: Write YouTube credentials
+        env:
+          YOUTUBE_TOKEN: ${{ secrets.YOUTUBE_TOKEN }}
+        run: |
+          if [ -z "$YOUTUBE_TOKEN" ]; then
+            echo "::error::YOUTUBE_TOKEN secret is not set. Run authorize_youtube.py locally and add it."
+            exit 1
+          fi
+          mkdir -p config
+          printf '%s' "$YOUTUBE_TOKEN" > config/youtube_token.json
+
+      - name: Generate and upload Shorts
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          YOUTUBE_TOKEN_JSON: ${{ secrets.YOUTUBE_TOKEN }}
+        run: |
+          ARGS="--count ${{ github.event.inputs.count || '3' }}"
+          if [ "${{ github.event.inputs.test_mode }}" = "true" ]; then
+            ARGS="$ARGS --test"
+          fi
+          if [ -n "${{ github.event.inputs.topic_id }}" ]; then
+            ARGS="$ARGS --topic ${{ github.event.inputs.topic_id }}"
+          fi
+          python main.py $ARGS
+
+      - name: Commit progress
+        # Runs even on a partial batch, so successfully published topics are
+        # never handed out again tomorrow.
+        if: always()
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add progress.json
+          if git diff --cached --quiet; then
+            echo "No progress changes to commit"
+          else
+            git commit -m "chore: publish shorts $(date -u +%Y-%m-%d)"
+            git pull --rebase --autostash origin ${{ github.ref_name }}
+            git push
+          fi
+
+      - name: Upload run artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: shorts-${{ github.run_number }}
+          path: |
+            output/videos/
+            output/thumbnails/
+            output/scripts/
+            logs/
+          retention-days: 7
+          if-no-files-found: ignore
