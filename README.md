@@ -67,6 +67,10 @@ Two things are deliberately different from a long-form pipeline:
 
 ## Setup
 
+**New here? Follow [SETUP.md](SETUP.md)** — a step-by-step walkthrough from
+zero to a running channel, with a check after every step. The summary below
+assumes you already know the pieces.
+
 ### 1. Install
 
 ```bash
