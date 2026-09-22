@@ -7,15 +7,20 @@
 #      powershell -ExecutionPolicy Bypass -File setup_github.ps1
 # =============================================================================
 
-$ErrorActionPreference = "Stop"
+# Deliberately NOT "Stop". Windows PowerShell wraps a native executable's
+# stderr in an ErrorRecord, so `gh` or `git` merely printing a progress line
+# would abort the whole script. Every external call below checks $LASTEXITCODE
+# explicitly instead, which is the reliable way to detect real failures.
+$ErrorActionPreference = "Continue"
+
 Set-Location $PSScriptRoot
 
 $RepoName = "upsc-shorts"
 
-function Step($text)  { Write-Host ""; Write-Host "==> $text" -ForegroundColor Cyan }
-function Good($text)  { Write-Host "    OK   $text" -ForegroundColor Green }
-function Warn($text)  { Write-Host "    WARN $text" -ForegroundColor Yellow }
-function Bad($text)   { Write-Host "    FAIL $text" -ForegroundColor Red }
+function Step($text) { Write-Host ""; Write-Host "==> $text" -ForegroundColor Cyan }
+function Good($text) { Write-Host "    OK   $text" -ForegroundColor Green }
+function Warn($text) { Write-Host "    WARN $text" -ForegroundColor Yellow }
+function Bad($text)  { Write-Host "    FAIL $text" -ForegroundColor Red }
 
 Write-Host ""
 Write-Host "  UPSC Shorts - GitHub setup" -ForegroundColor White
@@ -40,40 +45,50 @@ Good $gh
 
 # ------------------------------------------------------------------ login ----
 Step "Checking GitHub login"
-& $gh auth status 2>&1 | Out-Null
-if ($LASTEXITCODE -ne 0) {
-    Warn "Not logged in. Starting login now."
+
+# `gh auth token` is quiet and returns non-zero when logged out, which makes it
+# a cleaner probe than `gh auth status` (that one writes to stderr either way).
+& $gh auth token 2>$null | Out-Null
+$loggedIn = ($LASTEXITCODE -eq 0)
+
+if (-not $loggedIn) {
+    Warn "Not logged in. Starting the login flow now."
     Write-Host ""
     Write-Host "    Answer the prompts like this:" -ForegroundColor Gray
-    Write-Host "      Account            -> GitHub.com"              -ForegroundColor Gray
-    Write-Host "      Protocol           -> HTTPS"                   -ForegroundColor Gray
-    Write-Host "      Authenticate Git?  -> Yes"                     -ForegroundColor Gray
-    Write-Host "      How to authenticate-> Login with a web browser" -ForegroundColor Gray
-    Write-Host "      Then copy the code shown and press Enter."     -ForegroundColor Gray
+    Write-Host "      What account do you want to log into?  -> GitHub.com" -ForegroundColor Gray
+    Write-Host "      What is your preferred protocol?       -> HTTPS" -ForegroundColor Gray
+    Write-Host "      Authenticate Git with your GitHub...?  -> Yes" -ForegroundColor Gray
+    Write-Host "      How would you like to authenticate?    -> Login with a web browser" -ForegroundColor Gray
+    Write-Host ""
+    Write-Host "    You will then see a code like A1B2-C3D4." -ForegroundColor Gray
+    Write-Host "    Copy it, press Enter, paste it in the browser, click Authorize." -ForegroundColor Gray
     Write-Host ""
 
     & $gh auth login
+
+    & $gh auth token 2>$null | Out-Null
     if ($LASTEXITCODE -ne 0) {
-        Bad "Login did not complete. Run this script again when ready."
+        Bad "Login did not complete. Run this script again when you are ready."
         exit 1
     }
 }
 
-$user = (& $gh api user --jq .login) 2>$null
-if (-not $user) {
-    Bad "Logged in, but could not read your username."
+$user = & $gh api user --jq .login 2>$null
+if ($LASTEXITCODE -ne 0 -or -not $user) {
+    Bad "Logged in, but could not read your username from the GitHub API."
     exit 1
 }
+$user = $user.Trim()
 Good "Signed in as $user"
 
 # ------------------------------------------------------------------- repo ----
 Step "Preparing repository $user/$RepoName"
 
-& $gh repo view "$user/$RepoName" 2>&1 | Out-Null
+& $gh repo view "$user/$RepoName" 2>$null | Out-Null
 if ($LASTEXITCODE -eq 0) {
     Good "Repository already exists"
 } else {
-    & $gh repo create $RepoName --public --description "Automated daily UPSC/civil services YouTube Shorts" --disable-wiki
+    & $gh repo create $RepoName --public --description "Automated daily UPSC/civil services YouTube Shorts"
     if ($LASTEXITCODE -ne 0) {
         Bad "Could not create the repository"
         exit 1
@@ -84,7 +99,7 @@ if ($LASTEXITCODE -eq 0) {
 # ------------------------------------------------------------------- push ----
 Step "Pushing code"
 
-# Safety net: never push if a secret file somehow became tracked.
+# Safety net: never push if a credential file somehow became git-tracked.
 $tracked = git ls-files
 foreach ($leak in @(".env", "config/client_secrets.json", "config/youtube_token.json")) {
     if ($tracked -contains $leak) {
@@ -93,7 +108,7 @@ foreach ($leak in @(".env", "config/client_secrets.json", "config/youtube_token.
         exit 1
     }
 }
-Good "No secret files are tracked"
+Good "No credential files are tracked"
 
 $remoteUrl = "https://github.com/$user/$RepoName.git"
 if (git remote) {
@@ -116,7 +131,7 @@ Step "Setting repository secrets"
 function Get-EnvValue($name) {
     if (-not (Test-Path ".env")) { return "" }
     foreach ($line in (Get-Content ".env" -Encoding UTF8)) {
-        if ($line -match "^\s*$name\s*=\s*(.+)\s*$") {
+        if ($line -match "^\s*$name\s*=\s*(.+?)\s*$") {
             return $Matches[1].Trim().Trim('"').Trim("'")
         }
     }
@@ -131,7 +146,10 @@ foreach ($name in @("GROQ_API_KEY", "GEMINI_API_KEY")) {
         Warn "$name is empty in .env - skipped"
         $missing += $name
     } else {
-        $value | & $gh secret set $name --repo "$user/$RepoName"
+        # --body rather than a pipe: PowerShell appends a newline to piped
+        # strings, and a trailing newline inside an API key breaks the HTTP
+        # header it ends up in.
+        & $gh secret set $name --repo "$user/$RepoName" --body $value | Out-Null
         if ($LASTEXITCODE -eq 0) {
             Good "$name set ($($value.Length) chars)"
         } else {
@@ -142,7 +160,8 @@ foreach ($name in @("GROQ_API_KEY", "GEMINI_API_KEY")) {
 }
 
 if (Test-Path "config/youtube_token.json") {
-    Get-Content "config/youtube_token.json" -Raw -Encoding UTF8 | & $gh secret set YOUTUBE_TOKEN --repo "$user/$RepoName"
+    $token = (Get-Content "config/youtube_token.json" -Raw -Encoding UTF8).Trim()
+    & $gh secret set YOUTUBE_TOKEN --repo "$user/$RepoName" --body $token | Out-Null
     if ($LASTEXITCODE -eq 0) {
         Good "YOUTUBE_TOKEN set"
     } else {
