@@ -105,7 +105,7 @@ def main() -> int:
         check("Devanagari font", PASS, book.devanagari_path)
     else:
         check("Devanagari font", FAIL if language == "hindi" else WARN,
-              "install fonts-noto-devanagari, or drop a .ttf at "
+              "install fonts-noto-core, or drop a .ttf at "
               "assets/fonts/NotoSansDevanagari-Bold.ttf")
 
     if book.latin_path:

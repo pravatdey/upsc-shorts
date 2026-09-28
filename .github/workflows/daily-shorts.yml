@@ -36,6 +36,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Full history: the "Commit progress" step rebases onto origin, and a
+          # depth-1 shallow clone has no merge base to rebase against.
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -44,16 +48,21 @@ jobs:
           cache: 'pip'
 
       - name: Install system dependencies
-        # fonts-noto-devanagari supplies the Hindi glyphs. libraqm does the
-        # complex-script shaping (matra reordering, conjunct formation) that
-        # Devanagari needs — without it "डिग्री" renders as "डग्ि्री".
+        # fonts-noto-core ships NotoSansDevanagari-Bold.ttf at the
+        # /usr/share/fonts/truetype/noto/ path that src/video/fonts.py looks
+        # for, so it alone covers the Hindi glyphs. There is deliberately no
+        # fonts-noto-devanagari here: no such package exists on Ubuntu, and
+        # naming it made apt exit 100 and fail this step on every run.
+        #
+        # libraqm0 does the complex-script shaping (matra reordering, conjunct
+        # formation) that Devanagari needs — without it "डिग्री" renders as
+        # "डग्ि्री".
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends \
             ffmpeg \
             libraqm0 \
-            fonts-noto-core \
-            fonts-noto-devanagari
+            fonts-noto-core
           fc-cache -f
 
       - name: Install Python dependencies

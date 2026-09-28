@@ -80,7 +80,7 @@ pip install -r requirements.txt
 Windows already has a Devanagari font (Nirmala UI). On Linux:
 
 ```bash
-sudo apt-get install -y ffmpeg libraqm0 fonts-noto-devanagari
+sudo apt-get install -y ffmpeg libraqm0 fonts-noto-core
 ```
 
 ### 2. API keys
@@ -192,7 +192,8 @@ custom fonts, drop them at `assets/fonts/NotoSansDevanagari-Bold.ttf` and
 ## Troubleshooting
 
 **Hindi text renders as boxes** — no Devanagari font. Install
-`fonts-noto-devanagari`, or drop a `.ttf` into `assets/fonts/`.
+`fonts-noto-core` (it ships `NotoSansDevanagari-Bold.ttf`), or drop a `.ttf`
+into `assets/fonts/`.
 
 **Hindi matras sit in the wrong place** (`डग्ि्री` instead of `डिग्री`) — Pillow
 has no Raqm shaping engine. Common on Windows; `check_setup.py` warns about it.

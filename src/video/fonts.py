@@ -84,7 +84,7 @@ class FontBook:
         else:
             logger.warning(
                 "No Devanagari font found. Hindi text will render as empty boxes. "
-                "Install fonts-noto-devanagari, or drop a .ttf at "
+                "Install fonts-noto-core, or drop a .ttf at "
                 "assets/fonts/NotoSansDevanagari-Bold.ttf"
             )
 
