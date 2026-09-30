@@ -1,12 +1,15 @@
 {
-  "serial": 6,
+  "serial": 9,
   "used_topic_ids": [
     "eco-001",
     "env-001",
     "geog-001",
     "env-002",
     "geog-002",
-    "geo-001"
+    "geo-001",
+    "geog-003",
+    "geo-002",
+    "his-001"
   ],
   "uploads": [
     {
@@ -56,7 +59,31 @@
       "video_id": "u9eGxaly2L0",
       "url": "https://www.youtube.com/shorts/u9eGxaly2L0",
       "date": "2026-09-29"
+    },
+    {
+      "serial": 7,
+      "topic_id": "geog-003",
+      "title": "Western Disturbances #Shorts #upsc #gk",
+      "video_id": "13eLpWKL0cM",
+      "url": "https://www.youtube.com/shorts/13eLpWKL0cM",
+      "date": "2026-09-30"
+    },
+    {
+      "serial": 8,
+      "topic_id": "geo-002",
+      "title": "Chicken's Neck - Siliguri Corridor #Shorts #upsc #gk",
+      "video_id": "xNyQTpgQi2U",
+      "url": "https://www.youtube.com/shorts/xNyQTpgQi2U",
+      "date": "2026-09-30"
+    },
+    {
+      "serial": 9,
+      "topic_id": "his-001",
+      "title": "Permanent Settlement of 1793 #Shorts #upsc #gk",
+      "video_id": "-TTeg0M9Xrs",
+      "url": "https://www.youtube.com/shorts/-TTeg0M9Xrs",
+      "date": "2026-09-30"
     }
   ],
-  "last_run": "2026-09-29T06:13:58"
+  "last_run": "2026-09-30T06:03:24"
 }
