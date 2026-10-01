@@ -1,5 +1,5 @@
 {
-  "serial": 9,
+  "serial": 12,
   "used_topic_ids": [
     "eco-001",
     "env-001",
@@ -9,7 +9,10 @@
     "geo-001",
     "geog-003",
     "geo-002",
-    "his-001"
+    "his-001",
+    "geo-003",
+    "his-002",
+    "ir-001"
   ],
   "uploads": [
     {
@@ -83,7 +86,31 @@
       "video_id": "-TTeg0M9Xrs",
       "url": "https://www.youtube.com/shorts/-TTeg0M9Xrs",
       "date": "2026-09-30"
+    },
+    {
+      "serial": 10,
+      "topic_id": "geo-003",
+      "title": "String of Pearls #Shorts #upsc #gk",
+      "video_id": "4tenBFDFnF8",
+      "url": "https://www.youtube.com/shorts/4tenBFDFnF8",
+      "date": "2026-10-01"
+    },
+    {
+      "serial": 11,
+      "topic_id": "his-002",
+      "title": "Drain of Wealth Theory #Shorts #upsc #gk",
+      "video_id": "VhPCqAIeeik",
+      "url": "https://www.youtube.com/shorts/VhPCqAIeeik",
+      "date": "2026-10-01"
+    },
+    {
+      "serial": 12,
+      "topic_id": "ir-001",
+      "title": "QUAD Grouping #Shorts #upsc #gk",
+      "video_id": "MkK66avgV-g",
+      "url": "https://www.youtube.com/shorts/MkK66avgV-g",
+      "date": "2026-10-01"
     }
   ],
-  "last_run": "2026-09-30T06:03:24"
+  "last_run": "2026-10-01T06:36:37"
 }
