@@ -1,5 +1,5 @@
 {
-  "serial": 12,
+  "serial": 15,
   "used_topic_ids": [
     "eco-001",
     "env-001",
@@ -12,7 +12,10 @@
     "his-001",
     "geo-003",
     "his-002",
-    "ir-001"
+    "ir-001",
+    "his-003",
+    "ir-002",
+    "pol-001"
   ],
   "uploads": [
     {
@@ -110,7 +113,31 @@
       "video_id": "MkK66avgV-g",
       "url": "https://www.youtube.com/shorts/MkK66avgV-g",
       "date": "2026-10-01"
+    },
+    {
+      "serial": 13,
+      "topic_id": "his-003",
+      "title": "Rowlatt Act and Jallianwala Bagh #Shorts #upsc #gk",
+      "video_id": "xjDUm1Y34t0",
+      "url": "https://www.youtube.com/shorts/xjDUm1Y34t0",
+      "date": "2026-10-02"
+    },
+    {
+      "serial": 14,
+      "topic_id": "ir-002",
+      "title": "India's UNSC Permanent Seat Bid #Shorts #upsc #gk",
+      "video_id": "MliYt4b-Nlk",
+      "url": "https://www.youtube.com/shorts/MliYt4b-Nlk",
+      "date": "2026-10-02"
+    },
+    {
+      "serial": 15,
+      "topic_id": "pol-001",
+      "title": "Basic Structure Doctrine #Shorts #upsc #gk",
+      "video_id": "2m-i3F9ZgrY",
+      "url": "https://www.youtube.com/shorts/2m-i3F9ZgrY",
+      "date": "2026-10-02"
     }
   ],
-  "last_run": "2026-10-01T06:36:37"
+  "last_run": "2026-10-02T06:14:39"
 }
