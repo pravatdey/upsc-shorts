@@ -1,5 +1,5 @@
 {
-  "serial": 15,
+  "serial": 18,
   "used_topic_ids": [
     "eco-001",
     "env-001",
@@ -15,7 +15,10 @@
     "ir-001",
     "his-003",
     "ir-002",
-    "pol-001"
+    "pol-001",
+    "ir-003",
+    "pol-002",
+    "sch-001"
   ],
   "uploads": [
     {
@@ -137,7 +140,31 @@
       "video_id": "2m-i3F9ZgrY",
       "url": "https://www.youtube.com/shorts/2m-i3F9ZgrY",
       "date": "2026-10-02"
+    },
+    {
+      "serial": 16,
+      "topic_id": "ir-003",
+      "title": "BRICS Expansion #Shorts #upsc #gk",
+      "video_id": "cZjN5amVF9s",
+      "url": "https://www.youtube.com/shorts/cZjN5amVF9s",
+      "date": "2026-10-03"
+    },
+    {
+      "serial": 17,
+      "topic_id": "pol-002",
+      "title": "Article 356 - President's Rule #Shorts #upsc #gk",
+      "video_id": "ZqAAdEL4OoE",
+      "url": "https://www.youtube.com/shorts/ZqAAdEL4OoE",
+      "date": "2026-10-03"
+    },
+    {
+      "serial": 18,
+      "topic_id": "sch-001",
+      "title": "Ayushman Bharat #Shorts #upsc #gk",
+      "video_id": "pBVbug8O_MA",
+      "url": "https://www.youtube.com/shorts/pBVbug8O_MA",
+      "date": "2026-10-03"
     }
   ],
-  "last_run": "2026-10-02T06:14:39"
+  "last_run": "2026-10-03T05:49:00"
 }
