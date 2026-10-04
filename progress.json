@@ -1,5 +1,5 @@
 {
-  "serial": 18,
+  "serial": 20,
   "used_topic_ids": [
     "eco-001",
     "env-001",
@@ -18,7 +18,9 @@
     "pol-001",
     "ir-003",
     "pol-002",
-    "sch-001"
+    "sch-001",
+    "pol-003",
+    "sch-002"
   ],
   "uploads": [
     {
@@ -164,7 +166,23 @@
       "video_id": "pBVbug8O_MA",
       "url": "https://www.youtube.com/shorts/pBVbug8O_MA",
       "date": "2026-10-03"
+    },
+    {
+      "serial": 19,
+      "topic_id": "pol-003",
+      "title": "Anti-Defection Law #Shorts #upsc #gk",
+      "video_id": "IP-Rm53edMY",
+      "url": "https://www.youtube.com/shorts/IP-Rm53edMY",
+      "date": "2026-10-04"
+    },
+    {
+      "serial": 20,
+      "topic_id": "sch-002",
+      "title": "PM Jan Dhan Yojana #Shorts #upsc #gk",
+      "video_id": "mWpDXAkzmsQ",
+      "url": "https://www.youtube.com/shorts/mWpDXAkzmsQ",
+      "date": "2026-10-04"
     }
   ],
-  "last_run": "2026-10-03T05:49:00"
+  "last_run": "2026-10-04T06:23:50"
 }
