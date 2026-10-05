@@ -1,5 +1,5 @@
 {
-  "serial": 20,
+  "serial": 23,
   "used_topic_ids": [
     "eco-001",
     "env-001",
@@ -20,7 +20,10 @@
     "pol-002",
     "sch-001",
     "pol-003",
-    "sch-002"
+    "sch-002",
+    "sch-003",
+    "sci-001",
+    "ca-001"
   ],
   "uploads": [
     {
@@ -182,7 +185,31 @@
       "video_id": "mWpDXAkzmsQ",
       "url": "https://www.youtube.com/shorts/mWpDXAkzmsQ",
       "date": "2026-10-04"
+    },
+    {
+      "serial": 21,
+      "topic_id": "sch-003",
+      "title": "MGNREGA #Shorts #upsc #gk",
+      "video_id": "O5x7Lb_uudo",
+      "url": "https://www.youtube.com/shorts/O5x7Lb_uudo",
+      "date": "2026-10-05"
+    },
+    {
+      "serial": 22,
+      "topic_id": "sci-001",
+      "title": "Chandrayaan-3 South Pole Landing #Shorts #upsc #gk",
+      "video_id": "i6OR1G72rj8",
+      "url": "https://www.youtube.com/shorts/i6OR1G72rj8",
+      "date": "2026-10-05"
+    },
+    {
+      "serial": 23,
+      "topic_id": "ca-001",
+      "title": "Women's Reservation Act #Shorts #upsc #gk",
+      "video_id": "c92jqF0_0xM",
+      "url": "https://www.youtube.com/shorts/c92jqF0_0xM",
+      "date": "2026-10-05"
     }
   ],
-  "last_run": "2026-10-04T06:23:50"
+  "last_run": "2026-10-05T06:17:29"
 }
